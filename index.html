@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multicric</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a0033, #000);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CARD */
+.container {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(255,0,150,0.5);
+    position: relative; /* Base for stacking */
+}
+
+/* LOGO - Fixed Margin and Added Z-Index Control */
+.logo img {
+    width: 200px;
+    margin-bottom: -110px; /* Thoda kam kiya taaki overlap control mein rahe */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    filter: drop-shadow(0 0 20px #ff2da0);
+    position: relative;
+    z-index: 1; /* Logo peeche rahega agar overlap hua toh */
+}
+
+/* FOLLOW US TEXT */
+h2 {
+    margin-top: 0; 
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2; /* Text upar rahega */
+}
+
+p {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 0; 
+    position: relative;
+    z-index: 2;
+}
+
+/* BUTTONS - Clickable Fix */
+.btn {
+    display: block;
+    margin: 15px 0;
+    padding: 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff0080, #ff4dc4);
+    box-shadow: 0 0 25px rgba(255,0,150,0.8);
+    transition: 0.3s;
+    
+    /* CRITICAL FIX: Isse button hamesha top layer par rahega */
+    position: relative; 
+    z-index: 10; 
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="logo.png" alt="logo">
+    </div>
+
+    <h2>Follow Us</h2>
+    <p>Connect on your favorite platforms</p>
+
+    <a href="https://www.multicric.com/?code=124Sky" class="btn">
+        🌐 Visit Website
+    </a>
+
+    <a href="https://t.me/multicric124sky" class="btn">
+        📲 Telegram
+    </a>
+
+    <div class="footer">© 2025 multicric</div>
+
+</div>
+
+</body>
+</html>
