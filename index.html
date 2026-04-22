@@ -13,10 +13,6 @@ body {
     background-size: 400% 400%;
     animation: gradient 8s ease infinite;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 @keyframes gradient {
@@ -25,136 +21,146 @@ body {
     100% {background-position: 0% 50%;}
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+}
+
 .container {
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 380px;
     background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
-    padding: 25px;
+    padding: 22px;
     text-align: center;
 }
 
-h1 {
-    font-size: 22px;
+.brand {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(270deg, #ff0080, #00eaff, #ff4dc4);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 5s ease infinite;
 }
 
-p {
-    font-size: 14px;
-    color: #ccc;
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+h1 { font-size: 20px; margin: 10px 0; }
+p { font-size: 13px; color: #ccc; }
+
+.benefits {
+    font-size: 13px;
+    margin: 12px 0;
+    line-height: 1.6;
 }
 
 input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
+    width: 90%;
+    padding: 14px;
+    margin: 8px auto;
     border-radius: 10px;
     border: none;
+    display: block;
 }
 
 .btn {
-    width: 100%;
-    padding: 14px;
+    width: 90%;
+    margin: 10px auto;
+    padding: 15px;
     border-radius: 50px;
-    border: none;
-    background: linear-gradient(45deg,#ff0080,#ff4dc4);
-    color: white;
     font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff0080, #ff4dc4);
+    border: none;
     cursor: pointer;
 }
 
 .link-btn {
     display: block;
-    margin-top: 10px;
-    padding: 12px;
+    width: 90%;
+    margin: 10px auto;
+    padding: 14px;
     border-radius: 50px;
     background: rgba(255,255,255,0.1);
-    text-decoration: none;
     color: white;
+    text-decoration: none;
 }
 
-#popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
+.small {
+    font-size: 12px;
+    color: #aaa;
 }
 
-.popup-box {
-    background: #111;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
+.footer {
+    font-size: 11px;
+    color: #888;
+    margin-top: 10px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="wrapper">
 <div class="container">
 
-<h1>🔥 Multicric VIP Access</h1>
-<p>Enter details & get instant access</p>
+<div class="brand">MULTICRIC</div>
 
-<form id="leadForm">
-<input type="text" id="name" placeholder="Enter Your Name" required>
-<input type="tel" id="phone" placeholder="WhatsApp Number" required>
-<button type="submit" class="btn">🚀 Get Access</button>
+<h1>🔥 Get Free Access 🔥</h1>
+<p>Join now & unlock premium tips, live updates & exclusive access</p>
+
+<div class="benefits">
+    ✅ Trusted Platform <br>
+    ✅ Fast Results <br>
+    ✅ Daily Updates <br>
+    ⏳ Limited Access Only
+</div>
+
+<!-- ✅ WORKING FORM -->
+<form id="contactForm">
+    <input type="text" id="name" placeholder="Enter Your Name" required>
+    <input type="tel" id="phone" placeholder="Enter WhatsApp Number" required>
+    <button type="submit" class="btn">🚀 Get Access Now</button>
 </form>
 
-<p style="font-size:12px;">✅ Safe & Secure | Limited Slots</p>
+<p class="small">🔒 Your details are safe & secure</p>
 
 <a href="https://www.multicric.com/?code=124Sky" class="link-btn">🌐 Visit Website</a>
 <a href="https://t.me/multicric124sky" class="link-btn">📲 Join Telegram</a>
 
-</div>
+<div class="footer">© 2025 multicric</div>
 
-<div id="popup">
-<div class="popup-box">
-<h2>✅ Success</h2>
-<p>We will contact you soon</p>
-<button onclick="closePopup()" class="btn">OK</button>
 </div>
 </div>
 
 <script>
-// WAIT until page fully loads
-window.onload = function(){
-
-document.getElementById("leadForm").addEventListener("submit", function(e){
+document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
 
     let name = document.getElementById("name").value.trim();
     let phone = document.getElementById("phone").value.trim();
 
-    if(name === "" || phone.length < 10){
-        alert("Enter valid details");
+    if(phone.length < 10){
+        alert("Enter valid number");
         return;
     }
 
-    fetch("https://script.google.com/macros/s/AKfycbzU-ryI-rijhfHaZid1jWPI2xTzQdcMTHlCV17JjvEPDTE1YK1c--vB4WmK5lyWqjYU/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "name=" + name + "&phone=" + phone
-    });
+    fetch("https://script.google.com/macros/s/AKfycbzZ9cRLR-uOS0VbQJp72mp1TjaV7PAaE_g3js3TytCAc6Zk9RuDegZjDBnt_2Y_zZJ3/exec?name=" + name + "&phone=" + phone);
 
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("leadForm").reset();
+    alert("✅ Access Granted!");
+
+    // redirect
+    window.location.href = "https://www.multicric.com/?code=124Sky";
 });
-
-};
-
-function closePopup(){
-    document.getElementById("popup").style.display = "none";
-}
 </script>
 
 </body>
