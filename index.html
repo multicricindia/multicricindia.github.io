@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Multicric</title>
 
 <style>
@@ -37,16 +36,16 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 p {
-    color: #ccc;
     font-size: 14px;
+    color: #ccc;
 }
 
 input {
-    width: 90%;
+    width: 100%;
     padding: 12px;
     margin: 8px 0;
     border-radius: 10px;
@@ -62,10 +61,6 @@ input {
     color: white;
     font-weight: bold;
     cursor: pointer;
-}
-
-.btn:hover {
-    transform: scale(1.05);
 }
 
 .link-btn {
@@ -84,8 +79,8 @@ input {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.8);
     display: none;
+    background: rgba(0,0,0,0.8);
     justify-content: center;
     align-items: center;
 }
@@ -94,6 +89,7 @@ input {
     background: #111;
     padding: 20px;
     border-radius: 15px;
+    text-align: center;
 }
 </style>
 </head>
@@ -106,12 +102,9 @@ input {
 <p>Enter details & get instant access</p>
 
 <form id="leadForm">
-
-<input type="text" id="name" placeholder="Enter Name" required>
+<input type="text" id="name" placeholder="Enter Your Name" required>
 <input type="tel" id="phone" placeholder="WhatsApp Number" required>
-
 <button type="submit" class="btn">🚀 Get Access</button>
-
 </form>
 
 <p style="font-size:12px;">✅ Safe & Secure | Limited Slots</p>
@@ -123,37 +116,41 @@ input {
 
 <div id="popup">
 <div class="popup-box">
-<h2>✅ Success!</h2>
+<h2>✅ Success</h2>
 <p>We will contact you soon</p>
 <button onclick="closePopup()" class="btn">OK</button>
 </div>
 </div>
 
 <script>
+// WAIT until page fully loads
+window.onload = function(){
+
 document.getElementById("leadForm").addEventListener("submit", function(e){
     e.preventDefault();
 
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
+    let name = document.getElementById("name").value.trim();
+    let phone = document.getElementById("phone").value.trim();
 
-    // Fake number block
-    if(phone.length < 10){
-        alert("Enter valid number");
+    if(name === "" || phone.length < 10){
+        alert("Enter valid details");
         return;
     }
 
     fetch("https://script.google.com/macros/s/AKfycbzU-ryI-rijhfHaZid1jWPI2xTzQdcMTHlCV17JjvEPDTE1YK1c--vB4WmK5lyWqjYU/exec", {
         method: "POST",
-        body: new URLSearchParams({
-            name: name,
-            phone: phone
-        })
-    })
-    .then(res => {
-        document.getElementById("popup").style.display = "flex";
-        document.getElementById("leadForm").reset();
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "name=" + name + "&phone=" + phone
     });
+
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("leadForm").reset();
 });
+
+};
 
 function closePopup(){
     document.getElementById("popup").style.display = "none";
