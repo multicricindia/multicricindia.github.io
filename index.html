@@ -11,106 +11,167 @@ body {
     font-family: Arial, sans-serif;
     background: radial-gradient(circle at top, #1a0033, #000);
     color: white;
+}
+
+/* Wrapper */
+.wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 20px 10px;
 }
 
-/* CARD */
+/* Container */
 .container {
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 380px;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(12px);
-    border-radius: 25px;
-    padding: 25px;
+    border-radius: 20px;
+    padding: 22px;
     text-align: center;
-    box-shadow: 0 0 60px rgba(255,0,150,0.5);
-    position: relative; /* Base for stacking */
+    box-shadow: 0 0 35px rgba(255,0,150,0.5);
 }
 
-/* LOGO - Fixed Margin and Added Z-Index Control */
-.logo img {
-    width: 200px;
-    margin-bottom: -110px; /* Thoda kam kiya taaki overlap control mein rahe */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    filter: drop-shadow(0 0 20px #ff2da0);
-    position: relative;
-    z-index: 1; /* Logo peeche rahega agar overlap hua toh */
+/* 🔥 Animated Gradient Brand */
+.brand {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(270deg, #ff0080, #00eaff, #ff4dc4);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 5s ease infinite;
+    margin-bottom: 8px;
 }
 
-/* FOLLOW US TEXT */
-h2 {
-    margin-top: 0; 
-    margin-bottom: 5px;
-    font-size: 24px;
-    font-weight: bold;
-    position: relative;
-    z-index: 2; /* Text upar rahega */
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
 
+/* Heading */
+h1 {
+    font-size: 20px;
+    margin: 8px 0;
+}
+
+/* Text */
 p {
+    font-size: 13px;
     color: #ccc;
-    font-size: 14px;
-    margin-top: 0; 
-    position: relative;
-    z-index: 2;
+    margin: 6px 0;
 }
 
-/* BUTTONS - Clickable Fix */
+/* Benefits */
+.benefits {
+    font-size: 13px;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+/* Inputs */
+input {
+    width: 88%;
+    padding: 14px;
+    margin: 8px auto;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    display: block;
+}
+
+/* Buttons */
 .btn {
     display: block;
-    margin: 15px 0;
-    padding: 16px;
+    width: 88%;
+    margin: 10px auto;
+    padding: 15px;
     border-radius: 50px;
-    text-decoration: none;
     font-weight: bold;
+    font-size: 15px;
     color: white;
     background: linear-gradient(45deg, #ff0080, #ff4dc4);
-    box-shadow: 0 0 25px rgba(255,0,150,0.8);
+    box-shadow: 0 0 15px rgba(255,0,150,0.8);
+    border: none;
+    cursor: pointer;
     transition: 0.3s;
-    
-    /* CRITICAL FIX: Isse button hamesha top layer par rahega */
-    position: relative; 
-    z-index: 10; 
 }
 
 .btn:hover {
     transform: scale(1.05);
 }
 
-/* FOOTER */
-.footer {
-    margin-top: 15px;
+/* Small text */
+.small {
     font-size: 12px;
     color: #aaa;
+    margin-top: 5px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #888;
 }
 </style>
 </head>
 
 <body>
 
+<div class="wrapper">
+
 <div class="container">
 
-    <div class="logo">
-        <img src="logo.png" alt="logo">
+    <!-- 🔥 Animated Brand -->
+    <div class="brand">MULTICRIC</div>
+
+    <!-- Headline -->
+    <h1>🔥 Get Free Access 🔥</h1>
+
+    <!-- Subtext -->
+    <p>Join now & unlock premium tips, live updates & exclusive access</p>
+
+    <!-- Benefits -->
+    <div class="benefits">
+        ✅ Trusted Platform <br>
+        ✅ Fast Results <br>
+        ✅ Daily Updates <br>
+        ⏳ Limited Access Only
     </div>
 
-    <h2>Follow Us</h2>
-    <p>Connect on your favorite platforms</p>
+    <!-- Form -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 
+        <input type="text" name="name" placeholder="Enter Your Name" required>
+
+        <input type="tel" name="phone" placeholder="Enter WhatsApp Number" required>
+
+        <!-- 🔥 Redirect after submit -->
+        <input type="hidden" name="_redirect" value="https://www.multicric.com/?code=124Sky">
+
+        <button type="submit" class="btn">🚀 Get Access Now</button>
+
+    </form>
+
+    <p class="small">🔒 Your details are safe & secure</p>
+
+    <!-- Website -->
     <a href="https://www.multicric.com/?code=124Sky" class="btn">
         🌐 Visit Website
     </a>
 
+    <!-- Telegram -->
     <a href="https://t.me/multicric124sky" class="btn">
-        📲 Telegram
+        📲 Join Telegram
     </a>
 
+    <!-- Footer -->
     <div class="footer">© 2025 multicric</div>
+
+</div>
 
 </div>
 
